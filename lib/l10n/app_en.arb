@@ -1,0 +1,6 @@
+{
+  "appTitle": "Rick & Morty",
+  "homePageTabTitle" : "Home",
+  "favoritesPageTabTitle" : "Favorites",
+  "emptyFavorites": "There is no favorites here..."
+}
