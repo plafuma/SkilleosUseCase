@@ -4,6 +4,7 @@ import 'package:flutter_skilleos/src/presentation/commonWidgets/character_detail
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_skilleos/src/presentation/commonWidgets/list_shimmer.dart';
 import 'package:flutter_skilleos/src/presentation/providers/characters_providers.dart';
+import 'package:flutter_skilleos/src/utils/color_constants.dart';
 
 class FavoritesScreen extends ConsumerWidget {
   const FavoritesScreen({super.key});
@@ -13,7 +14,11 @@ class FavoritesScreen extends ConsumerWidget {
     final data = ref.watch(favoritesCharactersProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).favoritesPageTabTitle),
+        title: Text(
+          AppLocalizations.of(context).favoritesPageTabTitle,
+          style: TextStyle(color: ColorConstants.redSkilleos),
+        ),
+        backgroundColor: Colors.white,
       ),
       body: Center(
         child: Column(

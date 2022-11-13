@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_skilleos/src/presentation/commonWidgets/character_detail.dart';
 import 'package:flutter_skilleos/src/presentation/providers/characters_providers.dart';
+import 'package:flutter_skilleos/src/utils/color_constants.dart';
 import '../commonWidgets/list_shimmer.dart';
 import '../providers/bottom_navigation_providers.dart';
 
@@ -14,7 +15,9 @@ class HomeScreen extends ConsumerWidget {
     final data = ref.watch(charactersProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).appTitle),
+        title: Text(AppLocalizations.of(context).appTitle,
+            style: TextStyle(color: ColorConstants.redSkilleos)),
+        backgroundColor: Colors.white,
         actions: <Widget>[
           Padding(
               padding: const EdgeInsets.only(right: 20.0),

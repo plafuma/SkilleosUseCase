@@ -30,7 +30,7 @@ class SkilleosApp extends StatelessWidget {
         Locale('fr', ''),
       ],
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.grey,
       ),
       home: const BottomNavigation(),
     );

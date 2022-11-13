@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_skilleos/src/domain/character_model.dart';
 import 'package:flutter_skilleos/src/presentation/providers/characters_providers.dart';
+import 'package:flutter_skilleos/src/utils/color_constants.dart';
 import 'package:flutter_skilleos/src/utils/status_to_color.dart';
 
 class CharacterDetail extends ConsumerWidget {
@@ -17,9 +18,7 @@ class CharacterDetail extends ConsumerWidget {
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: const Color.fromARGB(255, 255, 0, 0),
-              gradient:
-                  const LinearGradient(colors: [Colors.red, Colors.redAccent]),
+              color: ColorConstants.lightGrey,
             ),
             height: 165.0,
             child: Row(
@@ -37,9 +36,9 @@ class CharacterDetail extends ConsumerWidget {
                   children: [
                     Text(
                       data.name,
-                      style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: ColorConstants.redSkilleos,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
@@ -48,12 +47,13 @@ class CharacterDetail extends ConsumerWidget {
                         Badge(badgeColor: data.status.toColor()),
                         const SizedBox(width: 8),
                         Text("${data.status}-${data.species}",
-                            style: const TextStyle(color: Colors.white)),
+                            style: TextStyle(color: ColorConstants.darkGrey)),
                       ],
                     ),
                     const SizedBox(height: 8),
                     RichText(
                         text: TextSpan(
+                      style: TextStyle(color: ColorConstants.darkGrey),
                       children: <TextSpan>[
                         const TextSpan(text: 'Gender : '),
                         TextSpan(
@@ -64,6 +64,7 @@ class CharacterDetail extends ConsumerWidget {
                     )),
                     RichText(
                         text: TextSpan(
+                      style: TextStyle(color: ColorConstants.darkGrey),
                       children: <TextSpan>[
                         const TextSpan(text: 'Origin : '),
                         TextSpan(
