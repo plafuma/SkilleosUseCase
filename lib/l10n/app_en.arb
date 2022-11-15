@@ -1,6 +1,9 @@
 {
   "appTitle": "Rick & Morty",
-  "homePageTabTitle" : "Home",
-  "favoritesPageTabTitle" : "Favorites",
-  "emptyFavorites": "There is no favorites here..."
+  "homePageTabTitle": "Home",
+  "favoritesPageTabTitle": "Favorites",
+  "emptyFavorites": "There is no favorites here...",
+  "characterDetailGender": "Gender : ",
+  "characterDetailOrigin": "Origin : ",
+  "errorRetrievingData": "An error occured, try again : Error message :"
 }

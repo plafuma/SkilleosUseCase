@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_skilleos/src/presentation/providers/bottom_navigation_providers.dart';
 import 'package:flutter_skilleos/src/presentation/screens/favorites_screen.dart';
 import 'package:flutter_skilleos/src/presentation/screens/home_screen.dart';
 import 'package:flutter_skilleos/src/utils/color_constants.dart';
-import '../providers/bottom_navigation_providers.dart';
 
 class BottomNavigation extends ConsumerWidget {
   const BottomNavigation({super.key});

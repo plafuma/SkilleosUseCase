@@ -1,6 +1,9 @@
 {
   "appTitle": "Rick et Morty",
-  "homePageTabTitle" : "Accueil",
-  "favoritesPageTabTitle" : "Favoris",
-  "emptyFavorites": "Il n'y a pas encore de favoris ici..."
+  "homePageTabTitle": "Accueil",
+  "favoritesPageTabTitle": "Favoris",
+  "emptyFavorites": "Il n'y a pas encore de favoris ici...",
+  "characterDetailGender": "Genre : ",
+  "characterDetailOrigin": "Origine : ",
+  "errorRetrievingData": "Une erreur est survenue, veuillez réessayer : Message d'erreur :"
 }

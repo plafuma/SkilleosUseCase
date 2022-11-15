@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'character_skeleton.dart';
+import 'package:flutter_skilleos/src/presentation/commonWidgets/character_skeleton.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ListShimmer extends StatelessWidget {

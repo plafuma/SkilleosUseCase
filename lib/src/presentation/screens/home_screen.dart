@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_skilleos/src/presentation/commonWidgets/character_detail.dart';
+import 'package:flutter_skilleos/src/presentation/commonWidgets/list_shimmer.dart';
 import 'package:flutter_skilleos/src/presentation/providers/characters_providers.dart';
 import 'package:flutter_skilleos/src/utils/color_constants.dart';
-import '../commonWidgets/list_shimmer.dart';
-import '../providers/bottom_navigation_providers.dart';
+import 'package:flutter_skilleos/src/utils/enum_character_sort_order.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -23,14 +23,15 @@ class HomeScreen extends ConsumerWidget {
               padding: const EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
-                  ref
-                      .read(charactersProvider.notifier)
-                      .sortCharacter(ref.read(isReversedProvider));
-                  ref.read(isReversedProvider.notifier).state =
-                      !ref.read(isReversedProvider);
+                  ref.read(characterSortOrderProvider.notifier).state =
+                      ref.read(characterSortOrderProvider) ==
+                              CharacterSortOrder.ascendingNameOrder
+                          ? CharacterSortOrder.descendingNameOrder
+                          : CharacterSortOrder.ascendingNameOrder;
                 },
                 child: Icon(
-                  ref.watch(isReversedProvider)
+                  ref.watch(characterSortOrderProvider) ==
+                          CharacterSortOrder.ascendingNameOrder
                       ? Icons.text_rotate_up
                       : Icons.text_rotation_down,
                   size: 26.0,
@@ -45,7 +46,6 @@ class HomeScreen extends ConsumerWidget {
                 child: RefreshIndicator(
               onRefresh: () async {
                 ref.invalidate(charactersProvider);
-                ref.invalidate(isReversedProvider);
               },
               child: data.when(
                   data: (characterData) => ListView.builder(
@@ -66,11 +66,10 @@ class HomeScreen extends ConsumerWidget {
                           child: Column(
                         children: <Widget>[
                           Text(
-                              "An error occured, try again : Error message : $e"),
+                              "${AppLocalizations.of(context).errorRetrievingData} $e"),
                           GestureDetector(
                               onTap: () {
                                 ref.invalidate(charactersProvider);
-                                ref.read(charactersProvider);
                               },
                               child: const Icon(
                                 Icons.refresh,

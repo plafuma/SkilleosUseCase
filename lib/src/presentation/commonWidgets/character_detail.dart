@@ -1,7 +1,9 @@
 import 'package:badges/badges.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_skilleos/src/domain/character_model.dart';
+import 'package:flutter_skilleos/src/presentation/commonWidgets/text_double_grey.dart';
 import 'package:flutter_skilleos/src/presentation/providers/characters_providers.dart';
 import 'package:flutter_skilleos/src/utils/color_constants.dart';
 import 'package:flutter_skilleos/src/utils/status_to_color.dart';
@@ -51,28 +53,14 @@ class CharacterDetail extends ConsumerWidget {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    RichText(
-                        text: TextSpan(
-                      style: TextStyle(color: ColorConstants.darkGrey),
-                      children: <TextSpan>[
-                        const TextSpan(text: 'Gender : '),
-                        TextSpan(
-                            text: data.gender,
-                            style:
-                                const TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    )),
-                    RichText(
-                        text: TextSpan(
-                      style: TextStyle(color: ColorConstants.darkGrey),
-                      children: <TextSpan>[
-                        const TextSpan(text: 'Origin : '),
-                        TextSpan(
-                            text: data.origin,
-                            style:
-                                const TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    )),
+                    TextDoubleGrey(
+                        firstValue:
+                            AppLocalizations.of(context).characterDetailGender,
+                        secondValue: data.gender),
+                    TextDoubleGrey(
+                        firstValue:
+                            AppLocalizations.of(context).characterDetailOrigin,
+                        secondValue: data.origin),
                   ],
                 )),
                 GestureDetector(

@@ -1,31 +1,23 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_skilleos/src/application/character_service.dart';
 import 'package:flutter_skilleos/src/domain/character_model.dart';
+import 'package:flutter_skilleos/src/utils/enum_character_sort_order.dart';
 
 class HomeScreenController
     extends StateNotifier<AsyncValue<List<CharacterModel>>> {
-  HomeScreenController({required this.characterService})
+  HomeScreenController(
+      {required this.characterService, required this.characterSortOrder})
       : super(const AsyncLoading()) {
     getCharacters();
   }
 
   final CharacterService characterService;
+  final CharacterSortOrder characterSortOrder;
 
   void getCharacters() async {
     state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() => characterService.getCharacters());
-  }
-
-  void sortCharacter(bool isReversed) async {
-    List<CharacterModel>? characters = state.value;
-    characters?.sort((a, b) {
-      if (!isReversed) {
-        return b.name.toLowerCase().compareTo(a.name.toLowerCase());
-      } else {
-        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
-      }
-    });
-    state = AsyncData((characters!));
+    state = await AsyncValue.guard(
+        () => characterService.getCharacters(characterSortOrder));
   }
 
   void toggleFavorite(int id, bool isFavorite) {
@@ -48,8 +40,11 @@ class HomeScreenController
 
 final charactersProvider = StateNotifierProvider<HomeScreenController,
     AsyncValue<List<CharacterModel>>>((ref) {
-  CharacterService characterService = ref.read(apiProvider);
-  return HomeScreenController(characterService: characterService);
+  final characterSortOrder = ref.watch(characterSortOrderProvider);
+  CharacterService characterService = ref.read(characterServiceProvider);
+  return HomeScreenController(
+      characterService: characterService,
+      characterSortOrder: characterSortOrder);
 });
 
 final favoritesCharactersProvider = FutureProvider((ref) async {
@@ -63,3 +58,6 @@ final favoritesCharactersProvider = FutureProvider((ref) async {
 
   return favoritesList;
 });
+
+final characterSortOrderProvider = StateProvider<CharacterSortOrder>(
+    (ref) => CharacterSortOrder.ascendingNameOrder);
