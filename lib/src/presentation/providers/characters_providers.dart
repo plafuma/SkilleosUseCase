@@ -47,7 +47,7 @@ final charactersProvider = StateNotifierProvider<HomeScreenController,
       characterSortOrder: characterSortOrder);
 });
 
-final favoritesCharactersProvider = FutureProvider((ref) async {
+final favoritesCharactersProvider = StateProvider((ref) {
   final characters = ref.watch(charactersProvider);
 
   List<CharacterModel> favoritesList = <CharacterModel>[];
