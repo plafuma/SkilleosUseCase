@@ -22,3 +22,8 @@ In order to build and run the app :
 ## App Architecture
 
 A simple but scalable architecture based on controller-service-repository pattern.
+
+## Screenshots
+
+<img src="https://github.com/plafuma/SkilleosUseCase/assets/7340631/d0cb25bd-eec2-48b3-a437-7b81d500a175" width="300">
+<img src="https://github.com/plafuma/SkilleosUseCase/assets/7340631/3b8181a7-59d4-42dd-a0d0-93f9bf4b65fa" width="300">
